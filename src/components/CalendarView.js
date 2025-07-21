@@ -123,18 +123,19 @@ function CalendarView({ holidays, holidayType, selectedState }) {
                 ))}
             </div>
 
+            {/* Calendar Grid: Adjusted for wider cells on mobile */}
             <div className="grid grid-cols-7 gap-1">
                 {calendarDays.map((day, index) => {
                     if (day.isPlaceholder) {
-                        return <div key={`placeholder-${index}`} className="p-2 bg-gray-100 dark:bg-gray-700 rounded"></div>;
+                        return <div key={`placeholder-${index}`} className="p-2 bg-gray-100 dark:bg-gray-700 rounded h-28 sm:h-20"></div>; {/* Increased height for touch */}
                     }
 
                     const today = new Date();
                     const isToday = day.date.toDateString() === today.toDateString();
                     const holidaysOnThisDay = getHolidayDetailsForDate(day.date);
 
-                    let dayClasses = "p-2 rounded text-gray-900 dark:text-gray-100 flex flex-col items-center justify-center h-20 relative";
-
+                    let dayClasses = "p-2 rounded text-gray-900 dark:text-gray-100 flex flex-col items-center justify-center h-28 sm:h-20 relative"; // Increased height
+                    
                     // Add cursor-pointer only if there are holidays to click
                     if (holidaysOnThisDay.length > 0) {
                         dayClasses += " cursor-pointer";

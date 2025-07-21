@@ -31,8 +31,8 @@ function App() {
                 <nav className="bg-white border-gray-200 py-2.5 dark:bg-gray-900">
                     <div className="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
                         <a href="#" className="flex items-center">
-                            {/* Replaced Flowbite logo with cuti_cuti_logo.png and made it bigger */}
-                            <img src="/images/cuti_cuti_logo.png" className="h-10 mr-3 sm:h-14" alt="cuti-cuti.my Logo" />
+                            {/* Header Logo: Bigger */}
+                            <img src="/images/cuti_cuti_logo.png" className="h-14 sm:h-16" alt="cuti-cuti.my Logo" />
                             {/* Removed the text "cuti-cuti.my 🇲🇾" */}
                         </a>
                         <div className="flex items-center lg:order-2">
@@ -75,8 +75,9 @@ function App() {
                 </nav>
             </header>
 
-            <section className="bg-gray-50 dark:bg-gray-900 pt-20"> {/* Added pt-20 to push content below fixed header */}
-                <div className="grid max-w-screen-xl px-4 pt-20 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-20"> {/* Adjusted pt- to align with header */}
+            {/* Hero Section: Reduced top padding/margin */}
+            <section className="bg-gray-50 dark:bg-gray-900 pt-16 sm:pt-20"> {/* Adjusted pt- for smaller gap */}
+                <div className="grid max-w-screen-xl px-4 pt-16 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-20"> {/* Adjusted pt- to align with header */}
                     <div className="mr-auto place-self-center lg:col-span-7">
                         <h1 className="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white">Malaysia Public & School Holidays 🇲🇾</h1>
                         <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Your ultimate guide to all public and school holidays in Malaysia for 2025 and 2026. Plan your getaways, set reminders, and explore amazing local travel destinations!</p>
@@ -97,14 +98,16 @@ function App() {
 
             <main className="container mx-auto p-4 py-8">
                 <section id="holidays" className="mb-12 pt-16"> {/* Added pt-16 for spacing below hero */}
-                    <h2 className="text-3xl font-bold mb-6 text-center text-gray-900 dark:text-white">Malaysia Holiday Calendar 🗓️</h2>
+                    {/* Holiday Calendar Heading: Ensure single line on mobile */}
+                    <h2 className="text-3xl font-bold mb-6 text-center text-gray-900 dark:text-white whitespace-nowrap overflow-hidden text-ellipsis sm:whitespace-normal">Malaysia Holiday Calendar 🗓️</h2>
                     <HolidayCalendar />
                 </section>
 
                 <hr className="border-gray-300 dark:border-gray-700 my-12" />
 
                 <section id="blog" className="pt-16"> {/* Added pt-16 for spacing */}
-                    <h2 className="text-3xl font-bold mb-6 text-center text-gray-900 dark:text-white">Malaysia Travel Ideas & Blog 📝</h2>
+                    {/* Blog Section Heading: Ensure single line on mobile */}
+                    <h2 className="text-3xl font-bold mb-6 text-center text-gray-900 dark:text-white whitespace-nowrap overflow-hidden text-ellipsis sm:whitespace-normal">Malaysia Travel Ideas & Blog 📝</h2>
                     <BlogSection />
                 </section>
             </main>
@@ -113,8 +116,8 @@ function App() {
                 <div className="max-w-screen-xl p-4 py-8 mx-auto lg:py-16 md:p-8 lg:p-10">
                     <div className="mx-auto max-w-screen-sm text-center">
                         <a href="#" className="flex items-center justify-center mb-4 text-2xl font-semibold text-gray-900 dark:text-white">
-                            {/* Replaced Flowbite logo with cuti_cuti_logo.png and removed text */}
-                            <img src="/images/cuti_cuti_logo.png" className="h-6 mr-3 sm:h-9" alt="cuti-cuti.my Logo" />
+                            {/* Footer Logo: Bigger and text removed */}
+                            <img src="/images/cuti_cuti_logo.png" className="h-12 sm:h-14" alt="cuti-cuti.my Logo" />
                         </a>
                         <p className="font-light text-gray-500 dark:text-gray-400">Plan your perfect Malaysian getaway with ease. View official holidays, set reminders, and get inspired by our travel guides.</p>
                     </div>
