@@ -31,13 +31,13 @@ function App() {
                 <nav className="bg-white border-gray-200 py-2.5 dark:bg-gray-900">
                     <div className="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-auto">
                         <a href="#" className="flex items-center">
-                            {/* Header Logo: Bigger */}
-                            <img src="/images/cuti_cuti_logo.png" className="h-14 sm:h-16" alt="cuti-cuti.my Logo" />
+                            {/* Header Logo: Made smaller */}
+                            <img src="/images/cuti_cuti_logo.png" className="h-10 sm:h-12" alt="cuti-cuti.my Logo" />
                             {/* Removed the text "cuti-cuti.my 🇲🇾" */}
                         </a>
                         <div className="flex items-center lg:order-2">
                             {/* Dark/Light Mode Toggle Switch */}
-                            <label className="inline-flex items-center cursor-pointer mr-4">
+                            <label className="inline-flex items-center cursor-pointer mr-2 sm:mr-4"> {/* Adjusted margin for spacing */}
                                 <input
                                     type="checkbox"
                                     value=""
@@ -46,8 +46,8 @@ function App() {
                                     onChange={toggleTheme}
                                     aria-label={`Switch to ${theme === 'light' ? 'Dark Mode' : 'Light Mode'}`}
                                 />
-                                <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
-                                <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
+                                <div className="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
+                                <span className="ms-2 sm:ms-3 text-xs sm:text-sm font-medium text-gray-900 dark:text-gray-300"> {/* Adjusted text size for mobile */}
                                     {theme === 'light' ? 'Light Mode ☀️' : 'Dark Mode 🌙'}
                                 </span>
                             </label>
@@ -75,8 +75,7 @@ function App() {
                 </nav>
             </header>
 
-            {/* Hero Section: Reduced top padding/margin */}
-            <section className="bg-gray-50 dark:bg-gray-900 pt-16 sm:pt-20"> {/* Adjusted pt- for smaller gap */}
+            <section className="bg-gray-50 dark:bg-gray-900 pt-10 sm:pt-14"> {/* Adjusted pt- for smaller gap */}
                 <div className="grid max-w-screen-xl px-4 pt-16 pb-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12 lg:pt-20"> {/* Adjusted pt- to align with header */}
                     <div className="mr-auto place-self-center lg:col-span-7">
                         <h1 className="max-w-2xl mb-4 text-4xl font-extrabold leading-none tracking-tight md:text-5xl xl:text-6xl dark:text-white">Malaysia Public & School Holidays 🇲🇾</h1>
@@ -98,16 +97,16 @@ function App() {
 
             <main className="container mx-auto p-4 py-8">
                 <section id="holidays" className="mb-12 pt-16"> {/* Added pt-16 for spacing below hero */}
-                    {/* Holiday Calendar Heading: Ensure single line on mobile */}
-                    <h2 className="text-3xl font-bold mb-6 text-center text-gray-900 dark:text-white whitespace-nowrap overflow-hidden text-ellipsis sm:whitespace-normal">Malaysia Holiday Calendar 🗓️</h2>
+                    {/* Holiday Calendar Heading: Ensure single line on mobile with responsive font */}
+                    <h2 className="text-xl xs:text-2xl sm:text-3xl font-bold mb-6 text-center text-gray-900 dark:text-white flex items-center justify-center whitespace-nowrap overflow-hidden text-ellipsis sm:whitespace-normal">Malaysia Holiday Calendar 🗓️</h2>
                     <HolidayCalendar />
                 </section>
 
                 <hr className="border-gray-300 dark:border-gray-700 my-12" />
 
                 <section id="blog" className="pt-16"> {/* Added pt-16 for spacing */}
-                    {/* Blog Section Heading: Ensure single line on mobile */}
-                    <h2 className="text-3xl font-bold mb-6 text-center text-gray-900 dark:text-white whitespace-nowrap overflow-hidden text-ellipsis sm:whitespace-normal">Malaysia Travel Ideas & Blog 📝</h2>
+                    {/* Blog Section Heading: Ensure single line on mobile with responsive font */}
+                    <h2 className="text-xl xs:text-2xl sm:text-3xl font-bold mb-6 text-center text-gray-900 dark:text-white flex items-center justify-center whitespace-nowrap overflow-hidden text-ellipsis sm:whitespace-normal">Malaysia Travel Ideas & Blog 📝</h2>
                     <BlogSection />
                 </section>
             </main>
@@ -117,7 +116,7 @@ function App() {
                     <div className="mx-auto max-w-screen-sm text-center">
                         <a href="#" className="flex items-center justify-center mb-4 text-2xl font-semibold text-gray-900 dark:text-white">
                             {/* Footer Logo: Bigger and text removed */}
-                            <img src="/images/cuti_cuti_logo.png" className="h-12 sm:h-14" alt="cuti-cuti.my Logo" />
+                            <img src="/images/cuti_cuti_logo.png" className="h-14 sm:h-16" alt="cuti-cuti.my Logo" /> {/* Made footer logo size same as header */}
                         </a>
                         <p className="font-light text-gray-500 dark:text-gray-400">Plan your perfect Malaysian getaway with ease. View official holidays, set reminders, and get inspired by our travel guides.</p>
                     </div>
@@ -132,7 +131,7 @@ function App() {
                                 onChange={toggleTheme}
                                 aria-label={`Switch to ${theme === 'light' ? 'Dark Mode' : 'Light Mode'}`}
                             />
-                            <div className="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
+                            <div className="relative w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600 dark:peer-checked:bg-blue-600"></div>
                             <span className="ms-3 text-sm font-medium text-gray-900 dark:text-gray-300">
                                 {theme === 'light' ? 'Light Mode ☀️' : 'Dark Mode 🌙'}
                             </span>

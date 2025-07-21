@@ -123,19 +123,26 @@ function CalendarView({ holidays, holidayType, selectedState }) {
                 ))}
             </div>
 
-            {/* Calendar Grid: Adjusted for wider cells on mobile */}
+            {/* Calendar Grid: Adjusted for more square cells */}
             <div className="grid grid-cols-7 gap-1">
                 {calendarDays.map((day, index) => {
                     if (day.isPlaceholder) {
-                        return <div key={`placeholder-${index}`} className="p-2 bg-gray-100 dark:bg-gray-700 rounded h-28 sm:h-20"></div>; {/* Increased height for touch */}
+                        return <div key={`placeholder-${index}`} className="p-2 bg-gray-100 dark:bg-gray-700 rounded h-24 sm:h-20"></div>; {/* Adjusted height */}
                     }
 
                     const today = new Date();
                     const isToday = day.date.toDateString() === today.toDateString();
                     const holidaysOnThisDay = getHolidayDetailsForDate(day.date);
 
-                    let dayClasses = "p-2 rounded text-gray-900 dark:text-gray-100 flex flex-col items-center justify-center h-28 sm:h-20 relative"; // Increased height
-                    
+                    // Adjusted height to better balance squareness and touch target size
+                    let dayClasses = "p-2 rounded text-gray-900 dark:text-gray-100 flex flex-col items-center justify-center h-24 relative"; // height h-24 (96px)
+
+                    // On smaller screens, allow it to be more square-like by setting aspect-square or adjusting height more dynamically
+                    // For example, on sm screens and above, height can be adjusted to be closer to width
+                    // Let's set a responsive height for sm and above to make it more square on larger screens while maintaining h-24 on xs
+                    dayClasses += " sm:h-24 md:h-28"; // This will make it dynamically taller on wider screens for better square-like appearance
+
+
                     // Add cursor-pointer only if there are holidays to click
                     if (holidaysOnThisDay.length > 0) {
                         dayClasses += " cursor-pointer";
