@@ -1,0 +1,44 @@
+{
+  "name": "holiday-man",
+  "version": "1.0.0",
+  "description": "Malaysia Public and School Holidays Website",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "build:tailwind": "npx tailwindcss -i ./src/tailwind.css -o ./public/tailwind.css --minify",
+    "watch:tailwind": "npx tailwindcss -i ./src/tailwind.css -o ./public/tailwind.css --watch"
+  },
+  "keywords": [
+    "malaysia",
+    "holidays",
+    "school holidays",
+    "public holidays",
+    "travel",
+    "react",
+    "tailwind"
+  ],
+  "author": "Holiday Man",
+  "license": "MIT",
+  "dependencies": {
+    "flowbite": "^3.1.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "tailwindcss": "^3.4.4"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

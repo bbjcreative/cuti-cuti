@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cuti-cuti.my - Malaysia Holidays</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="./tailwind.css" rel="stylesheet">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#317EFB"/>
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="cuti-cuti.my: Malaysia's Public and School Holidays for 2025 and 2026. View, save, and get reminders for your holidays. Discover travel ideas within Malaysia.">
+    <meta name="keywords" content="Malaysia holidays, school holidays Malaysia, public holidays Malaysia, 2025 holidays, 2026 holidays, travel Malaysia, family trips, solo trips, local travel, Google Calendar, iCal, cuti-cuti.my">
+    <meta name="author" content="cuti-cuti.my">
+    <meta property="og:title" content="cuti-cuti.my - Malaysia Holidays">
+    <meta property="og:description" content="cuti-cuti.my: Malaysia's Public and School Holidays for 2025 and 2026. View, save, and get reminders for your holidays. Discover travel ideas within Malaysia.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="YOUR_WEBSITE_URL_HERE">
+    <meta property="og:image" content="YOUR_OG_IMAGE_URL_HERE">
+    <link rel="icon" href="YOUR_FAVICON_URL_HERE">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900" style="font-family: 'Inter', sans-serif;">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+    <script src="../src/index.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
