@@ -91,7 +91,7 @@ function CalendarView({ holidays, holidayType, selectedState }) {
     };
 
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-    const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]; // For calendar header
+    const dayNames = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"]; // Shortened day names
 
     const calendarDays = generateCalendarDays();
 
@@ -123,31 +123,24 @@ function CalendarView({ holidays, holidayType, selectedState }) {
                 ))}
             </div>
 
-            {/* Calendar Grid: Adjusted for more square cells */}
+            {/* Calendar Grid: Using aspect-square for mobile-friendliness */}
             <div className="grid grid-cols-7 gap-1">
                 {calendarDays.map((day, index) => {
                     if (day.isPlaceholder) {
-                        return <div key={`placeholder-${index}`} className="p-2 bg-gray-100 dark:bg-gray-700 rounded h-24 sm:h-20"></div>; {/* Adjusted height */}
+                        return <div key={`placeholder-${index}`} className="p-2 bg-gray-100 dark:bg-gray-700 rounded aspect-square"></div>;
                     }
 
                     const today = new Date();
                     const isToday = day.date.toDateString() === today.toDateString();
                     const holidaysOnThisDay = getHolidayDetailsForDate(day.date);
 
-                    // Adjusted height to better balance squareness and touch target size
-                    let dayClasses = "p-2 rounded text-gray-900 dark:text-gray-100 flex flex-col items-center justify-center h-24 relative"; // height h-24 (96px)
-
-                    // On smaller screens, allow it to be more square-like by setting aspect-square or adjusting height more dynamically
-                    // For example, on sm screens and above, height can be adjusted to be closer to width
-                    // Let's set a responsive height for sm and above to make it more square on larger screens while maintaining h-24 on xs
-                    dayClasses += " sm:h-24 md:h-28"; // This will make it dynamically taller on wider screens for better square-like appearance
-
-
+                    // Replaced fixed heights with aspect-square
+                    let dayClasses = "p-2 rounded text-gray-900 dark:text-gray-100 flex flex-col items-center justify-center relative aspect-square";
+                    
                     // Add cursor-pointer only if there are holidays to click
                     if (holidaysOnThisDay.length > 0) {
                         dayClasses += " cursor-pointer";
                     } else {
-                        // Slight gradient/color for non-holiday days to differentiate
                         dayClasses += " bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600";
                     }
 
@@ -155,57 +148,34 @@ function CalendarView({ holidays, holidayType, selectedState }) {
                         dayClasses += " border-2 border-purple-500 dark:border-purple-400";
                     }
 
-                    // Determine holiday types present for icon and cell background
+                    // Determine holiday types present for cell background
                     const publicHolidaysOnDay = holidaysOnThisDay.filter(h => h.type === 'public');
                     const schoolHolidaysOnDay = holidaysOnThisDay.filter(h => h.type === 'school');
 
-                    let holidayIcon = null; // Default no icon
                     let holidayCellBgClass = ""; // For the main cell background color
 
-                    // Logic for icons based on holiday type and selectedState
-                    if (selectedState !== 'All Public Holidays') { // Icons are only shown if selectedState is NOT 'All Public Holidays'
+                    // Check for combinations first (highest priority for gradients)
+                    if (publicHolidaysOnDay.length > 0 && schoolHolidaysOnDay.length > 0) {
+                        // Case 1: Both Public (any type) AND School Holidays
+                        holidayCellBgClass = "bg-gradient-to-br from-blue-500 to-green-500 text-white";
+                    } else if (publicHolidaysOnDay.length > 0) {
+                        // Case 2: Only Public Holidays (National or State or Mixed Public)
                         const hasPureNationalPublic = publicHolidaysOnDay.some(h => h.states === 'National' && !h.states.includes('except'));
-                        const hasStateSpecificPublic = publicHolidaysOnDay.some(h => {
-                            const statesParts = h.states.split(',').map(s => s.trim());
-                            return statesParts.includes(selectedState) && !h.states.includes('National');
-                        });
-                        // A holiday is "National with Exclusion" if it's a national holiday but has an 'except' clause
-                        const hasNationalWithExclusion = publicHolidaysOnDay.some(h => h.states.includes('National') && h.states.includes('except'));
+                        const hasStatePublic = publicHolidaysOnDay.some(h => h.states !== 'National' && !h.states.includes('except')); // Indicates a pure state holiday
 
-
-                        if (publicHolidaysOnDay.length > 0 && schoolHolidaysOnDay.length > 0) {
-                            // Case: Both Public (any type) AND School Holidays
-                            holidayIcon = '🏛️'; // Building icon for both public and school
-                            holidayCellBgClass = "bg-gradient-to-br from-orange-500 to-green-500 text-white"; // Orange to green gradient
-                        } else if (schoolHolidaysOnDay.length > 0) {
-                            // Case: Only School Holiday
-                            holidayIcon = '🚌'; // School bus icon
-                            holidayCellBgClass = "bg-green-500 text-white";
-                        } else if (publicHolidaysOnDay.length > 0) {
-                            // Case: Only Public Holidays (need to differentiate National, State, Mixed Public)
-                            if (hasPureNationalPublic && !hasStateSpecificPublic && !hasNationalWithExclusion) {
-                                // Pure National Holiday
-                                holidayIcon = '🏝️'; // Island icon
-                                holidayCellBgClass = "bg-orange-500 text-white"; // Orange for public holidays
-                            } else if (hasStateSpecificPublic && !hasPureNationalPublic && !hasNationalWithExclusion) {
-                                // Pure State Holiday
-                                holidayIcon = '🏛️'; // Building icon for pure state
-                                holidayCellBgClass = "bg-orange-500 text-white"; // Orange for public holidays
-                            } else {
-                                // Mixed Public Holidays (National + State, or National with Exclusion)
-                                holidayIcon = '🗓️'; // Calendar icon for mixed public types
-                                holidayCellBgClass = "bg-orange-500 text-white"; // Orange for public holidays
-                            }
-                        }
-                    } else {
-                        // If 'All Public Holidays' is selected, only apply background colors but no icons
-                        if (publicHolidaysOnDay.length > 0 && schoolHolidaysOnDay.length > 0) {
-                            holidayCellBgClass = "bg-gradient-to-br from-orange-500 to-green-500 text-white";
-                        } else if (publicHolidaysOnDay.length > 0) {
+                        if (hasPureNationalPublic && !hasStatePublic) {
+                            // Pure National Public Holiday for the selected state
+                            holidayCellBgClass = "bg-blue-500 text-white";
+                        } else if (hasStatePublic && !hasPureNationalPublic) {
+                            // Pure State Holiday for the selected state
                             holidayCellBgClass = "bg-orange-500 text-white";
-                        } else if (schoolHolidaysOnDay.length > 0) {
-                            holidayCellBgClass = "bg-green-500 text-white";
+                        } else {
+                            // Mixed Public Holidays (National + State, or National with Exclusion)
+                            holidayCellBgClass = "bg-gradient-to-br from-blue-500 to-orange-500 text-white";
                         }
+                    } else if (schoolHolidaysOnDay.length > 0) {
+                        // Case 3: Only School Holidays
+                        holidayCellBgClass = "bg-green-500 text-white";
                     }
 
 
@@ -221,34 +191,34 @@ function CalendarView({ holidays, holidayType, selectedState }) {
                             aria-label={`${day.date.toDateString()}. ${holidaysOnThisDay.length > 0 ? 'Holidays present. Click for details.' : 'No holidays.'}`}
                             onClick={holidaysOnThisDay.length > 0 ? () => handleDateClick(day.date) : undefined}
                         >
-                            <span className="font-bold text-lg">{day.date.getDate()}</span>
-                            {holidayIcon && (
-                                <span className="absolute bottom-1 right-1 text-3xl" aria-hidden="true" title="Holiday Present">
-                                    {holidayIcon}
-                                </span>
-                            )}
+                            {/* Responsive font size for date number */}
+                            <span className="font-bold text-lg sm:text-xl md:text-2xl">{day.date.getDate()}</span>
+                            {/* No more icons in cells */}
                         </div>
                     );
                 })}
             </div>
-            {/* Legend for colors and icons */}
+            {/* Legend for colors */}
             <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm" role="group" aria-label="Holiday type legend">
                 <div className="flex items-center">
+                    <span className="inline-block w-4 h-4 bg-blue-500 rounded-full mr-2" aria-hidden="true"></span>
+                    <span className="text-gray-700 dark:text-gray-300">National Holiday</span>
+                </div>
+                <div className="flex items-center">
                     <span className="inline-block w-4 h-4 bg-orange-500 rounded-full mr-2" aria-hidden="true"></span>
-                    <span className="text-gray-700 dark:text-gray-300">National Holiday 🏝️</span>
+                    <span className="text-gray-700 dark:text-gray-300">State Holiday</span>
                 </div>
                 <div className="flex items-center">
                     <span className="inline-block w-4 h-4 bg-green-500 rounded-full mr-2" aria-hidden="true"></span>
-                    <span className="text-gray-700 dark:text-gray-300">School Holiday 🚌</span>
-                </div>
-                {/* New Mixed Holidays entry */}
-                <div className="flex items-center">
-                    <span className="inline-block w-4 h-4 bg-orange-500 rounded-full mr-2" aria-hidden="true"></span> {/* Orange swatch for public holiday base */}
-                    <span className="text-gray-700 dark:text-gray-300">State Holiday 🏛️</span>
+                    <span className="text-gray-700 dark:text-gray-300">School Holiday</span>
                 </div>
                 <div className="flex items-center">
-                    <span className="inline-block w-4 h-4 bg-gradient-to-br from-orange-500 to-green-500 rounded-full mr-2" aria-hidden="true"></span>
-                    <span className="text-gray-700 dark:text-gray-300">Mixed Holidays 🗓️</span>
+                    <span className="inline-block w-4 h-4 bg-gradient-to-br from-blue-500 to-green-500 rounded-full mr-2" aria-hidden="true"></span>
+                    <span className="text-gray-700 dark:text-gray-300">Mixed Public & School Holidays</span>
+                </div>
+                <div className="flex items-center">
+                    <span className="inline-block w-4 h-4 bg-gradient-to-br from-blue-500 to-orange-500 rounded-full mr-2" aria-hidden="true"></span>
+                    <span className="text-gray-700 dark:text-gray-300">Mixed National & State Holidays</span>
                 </div>
                 <div className="flex items-center">
                     <span className="inline-block w-4 h-4 border-2 border-purple-500 rounded-full mr-2" aria-hidden="true"></span>

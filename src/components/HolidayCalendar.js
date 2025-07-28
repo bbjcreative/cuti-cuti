@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import CalendarView from './CalendarView';
 
 function HolidayCalendar() {
-    // Version 22 of Holiday Data - Cleaned and ready for display
-    const holidaysV22 = {
+    // Version 23 of Holiday Data - Cleaned and ready for display
+    const holidaysV23 = {
         public: [
             { date: '1 Jan 2025', day: 'Wed', holiday: "New Year's Day", states: "National except Johor, Kedah, Kelantan, Perlis & Terengganu" },
             { date: '14 Jan 2025', day: 'Tue', holiday: "YDPB Negeri Sembilan's Birthday", states: "Negeri Sembilan" },
@@ -56,6 +56,8 @@ function HolidayCalendar() {
             { date: '1 Sep 2025', day: 'Mon', holiday: "Merdeka Day Holiday", states: "National except Kedah, Kelantan & Terengganu" },
             { date: '5 Sep 2025', day: 'Fri', holiday: "Prophet Muhammad's Birthday", states: "National" },
             { date: '7 Sep 2025', day: 'Sun', holiday: "Prophet Muhammad's Birthday Holiday", states: "Kedah" },
+            // Added new holiday here
+            { date: '15 Sep 2025', day: 'Mon', holiday: "Malaysia Day Special Holiday", states: "National" },
             { date: '16 Sep 2025', day: 'Tue', holiday: "Malaysia Day", states: "National" },
             { date: '29 Sep 2025', day: 'Mon', holiday: "Sultan of Kelantan's Birthday", states: "Kelantan" },
             { date: '30 Sep 2025', day: 'Tue', holiday: "Sultan of Kelantan's Birthday Holiday", states: "Kelantan" },
@@ -106,7 +108,7 @@ function HolidayCalendar() {
         let currentHolidays = [];
 
         if (selectedType === 'public') {
-            currentHolidays = holidaysV22.public.filter(holiday => {
+            currentHolidays = holidaysV23.public.filter(holiday => {
                 const statesString = holiday.states;
                 const isNationalHoliday = statesString.includes('National');
                 const excludedStates = isNationalHoliday && statesString.includes('except') ?
@@ -127,9 +129,9 @@ function HolidayCalendar() {
             });
         } else {
             if (selectedGroup === 'kumpulanA') {
-                currentHolidays = holidaysV22.school.kumpulanA;
+                currentHolidays = holidaysV23.school.kumpulanA;
             } else if (selectedGroup === 'kumpulanB') {
-                currentHolidays = holidaysV22.school.kumpulanB;
+                currentHolidays = holidaysV23.school.kumpulanB;
             }
         }
         return currentHolidays;
@@ -199,7 +201,7 @@ function HolidayCalendar() {
         let icsContent = [
             'BEGIN:VCALENDAR',
             'VERSION:2.0',
-            'PRODID:-//cuti-cuti.my//Malaysia Holidays V22.0//EN', // Updated PRODID
+            'PRODID:-//cuti-cuti.my//Malaysia Holidays V23.0//EN', // Updated PRODID
             'CALSCALE:GREGORIAN',
             'BEGIN:VEVENT',
             `UID:${uid}`,

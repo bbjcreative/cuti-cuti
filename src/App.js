@@ -96,10 +96,15 @@ function App() {
             </section>
 
             <main className="container mx-auto p-4 py-8">
-                <section id="holidays" className="mb-12 pt-16"> {/* Added pt-16 for spacing below hero */}
+                <section id="holidays" className="mb-12 pt-16">
                     {/* Holiday Calendar Heading: Ensure single line on mobile with responsive font */}
                     <h2 className="text-xl xs:text-2xl sm:text-3xl font-bold mb-6 text-center text-gray-900 dark:text-white flex items-center justify-center whitespace-nowrap overflow-hidden text-ellipsis sm:whitespace-normal">Malaysia Holiday Calendar 🗓️</h2>
-                    <HolidayCalendar />
+                    {/* Responsive wrapper for mobile-friendly horizontal scroll */}
+                    <div className="w-full overflow-x-auto">
+                        <div className="min-w-[320px] sm:min-w-0">
+                            <HolidayCalendar />
+                        </div>
+                    </div>
                 </section>
 
                 <hr className="border-gray-300 dark:border-gray-700 my-12" />
