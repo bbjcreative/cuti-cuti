@@ -1,4 +1,3 @@
-// BlogSection.js
 import React, { useState, useEffect } from 'react';
 
 // Basic Modal Component (can be in a separate file, e.g., components/BlogModal.js)
@@ -42,7 +41,6 @@ const BlogModal = ({ post, onClose }) => {
                 <h2 className="text-3xl font-bold mb-3 text-gray-900 dark:text-white">{post.title}</h2>
                 <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">Published on: {post.date}</p>
                 <div className="prose dark:prose-invert max-w-none text-gray-700 dark:text-gray-300">
-                    {/* Call the new formatting function to render content */}
                     {formatContent(post.content)}
                 </div>
                  {post.originalLink && (
@@ -81,9 +79,9 @@ function BlogSection() {
 
                 const formattedPosts = data.releases.map(item => {
                     const slug = item.title.toLowerCase()
-                                        .replace(/[^a-z0-9\s-]/g, '')
-                                        .replace(/\s+/g, '-')
-                                        .replace(/-+/g, '-');
+                                            .replace(/[^a-z0-9\s-]/g, '')
+                                            .replace(/\s+/g, '-')
+                                            .replace(/-+/g, '-');
 
                     const excerpt = item.content.length > 150
                         ? item.content.substring(0, 150) + '...'
@@ -91,12 +89,13 @@ function BlogSection() {
 
                     let formattedDate = 'Date Unavailable';
                     try {
-                        const dateMatch = item.date.trim().match(/^(\d{1,2})(?:st|nd|rd|th)? of (\w+) (\d{4})$/i);
+                        // Corrected regex to match "31st of Aug" format and append the current year
+                        const dateMatch = item.date.trim().match(/^(\d{1,2})(?:st|nd|rd|th)? of (\w+)/i);
 
-                        if (dateMatch && dateMatch.length === 4) {
+                        if (dateMatch && dateMatch.length >= 3) {
                             const day = parseInt(dateMatch[1], 10);
                             const monthName = dateMatch[2];
-                            const year = parseInt(dateMatch[3], 10);
+                            const currentYear = new Date().getFullYear();
 
                             const monthMap = {
                                 'jan': 0, 'feb': 1, 'mar': 2, 'apr': 3,
@@ -108,18 +107,12 @@ function BlogSection() {
                             };
                             const month = monthMap[monthName.toLowerCase()];
 
-                            if (month !== undefined && !isNaN(day) && !isNaN(year)) {
-                                const dateObj = new Date(year, month, day);
-                                if (dateObj.getFullYear() === year && dateObj.getMonth() === month && dateObj.getDate() === day) {
-                                     formattedDate = dateObj.toLocaleDateString('en-MY', { year: 'numeric', month: 'long', day: 'numeric' });
-                                } else {
-                                    console.warn("Constructed date mismatch for:", item.date);
+                            if (month !== undefined && !isNaN(day)) {
+                                const dateObj = new Date(currentYear, month, day);
+                                if (dateObj.getFullYear() === currentYear && dateObj.getMonth() === month && dateObj.getDate() === day) {
+                                    formattedDate = dateObj.toLocaleDateString('en-MY', { year: 'numeric', month: 'long', day: 'numeric' });
                                 }
-                            } else {
-                                console.warn("Invalid date parts after regex match for:", item.date);
                             }
-                        } else {
-                            console.warn("Date string did not match expected 'DDth of Mon YYYY' format:", item.date);
                         }
                     } catch (e) {
                         console.error("Error processing date:", item.date, e);
@@ -168,11 +161,6 @@ function BlogSection() {
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
     const currentPosts = posts.slice(indexOfFirstPost, indexOfLastPost);
-
-    const paginate = (pageNumber) => {
-        if (pageNumber < 1 || pageNumber > totalPages) return;
-        setCurrentPage(pageNumber);
-    };
 
     const Pagination = () => {
         const pageNumbers = [];
