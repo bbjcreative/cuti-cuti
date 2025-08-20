@@ -157,7 +157,7 @@ function CalendarView({ holidays, holidayType, selectedState }) {
                     // Check for combinations first (highest priority for gradients)
                     if (publicHolidaysOnDay.length > 0 && schoolHolidaysOnDay.length > 0) {
                         // Case 1: Both Public (any type) AND School Holidays
-                        holidayCellBgClass = "bg-gradient-to-br from-blue-500 to-green-500 text-white";
+                        holidayCellBgClass = "bg-gradient-to-br from-orange-500 to-green-500 text-white";
                     } else if (publicHolidaysOnDay.length > 0) {
                         // Case 2: Only Public Holidays (National or State or Mixed Public)
                         const hasPureNationalPublic = publicHolidaysOnDay.some(h => h.states === 'National' && !h.states.includes('except'));
@@ -165,13 +165,13 @@ function CalendarView({ holidays, holidayType, selectedState }) {
 
                         if (hasPureNationalPublic && !hasStatePublic) {
                             // Pure National Public Holiday for the selected state
-                            holidayCellBgClass = "bg-blue-500 text-white";
+                            holidayCellBgClass = "bg-orange-500 text-white";
                         } else if (hasStatePublic && !hasPureNationalPublic) {
                             // Pure State Holiday for the selected state
-                            holidayCellBgClass = "bg-orange-500 text-white";
+                            holidayCellBgClass = "bg-blue-500 text-white";
                         } else {
                             // Mixed Public Holidays (National + State, or National with Exclusion)
-                            holidayCellBgClass = "bg-gradient-to-br from-blue-500 to-orange-500 text-white";
+                            holidayCellBgClass = "bg-gradient-to-br from-orange-500 to-blue-500 text-white";
                         }
                     } else if (schoolHolidaysOnDay.length > 0) {
                         // Case 3: Only School Holidays
@@ -201,11 +201,11 @@ function CalendarView({ holidays, holidayType, selectedState }) {
             {/* Legend for colors */}
             <div className="mt-6 flex flex-wrap justify-center gap-4 text-sm" role="group" aria-label="Holiday type legend">
                 <div className="flex items-center">
-                    <span className="inline-block w-4 h-4 bg-blue-500 rounded-full mr-2" aria-hidden="true"></span>
+                    <span className="inline-block w-4 h-4 bg-orange-500 rounded-full mr-2" aria-hidden="true"></span>
                     <span className="text-gray-700 dark:text-gray-300">National Holiday</span>
                 </div>
                 <div className="flex items-center">
-                    <span className="inline-block w-4 h-4 bg-orange-500 rounded-full mr-2" aria-hidden="true"></span>
+                    <span className="inline-block w-4 h-4 bg-blue-500 rounded-full mr-2" aria-hidden="true"></span>
                     <span className="text-gray-700 dark:text-gray-300">State Holiday</span>
                 </div>
                 <div className="flex items-center">
@@ -213,11 +213,11 @@ function CalendarView({ holidays, holidayType, selectedState }) {
                     <span className="text-gray-700 dark:text-gray-300">School Holiday</span>
                 </div>
                 <div className="flex items-center">
-                    <span className="inline-block w-4 h-4 bg-gradient-to-br from-blue-500 to-green-500 rounded-full mr-2" aria-hidden="true"></span>
+                    <span className="inline-block w-4 h-4 bg-gradient-to-br from-orange-500 to-green-500 rounded-full mr-2" aria-hidden="true"></span>
                     <span className="text-gray-700 dark:text-gray-300">Mixed Public & School Holidays</span>
                 </div>
                 <div className="flex items-center">
-                    <span className="inline-block w-4 h-4 bg-gradient-to-br from-blue-500 to-orange-500 rounded-full mr-2" aria-hidden="true"></span>
+                    <span className="inline-block w-4 h-4 bg-gradient-to-br from-orange-500 to-blue-500 rounded-full mr-2" aria-hidden="true"></span>
                     <span className="text-gray-700 dark:text-gray-300">Mixed National & State Holidays</span>
                 </div>
                 <div className="flex items-center">
