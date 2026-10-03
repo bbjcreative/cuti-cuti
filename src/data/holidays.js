@@ -173,6 +173,112 @@ export const holidaysV26 = {
     }
 };
 
+// DATA UPDATE FOR 2027
+// Public holidays: PROVISIONAL (publicholidays.com.my, Oct 2026) - re-check against the official JPM gazette once announced.
+// School holidays: KPM "Kalendar Akademik Tahun 2027" (Lampiran A, B & C).
+const kumpulanA27 = ["Kedah", "Kelantan", "Terengganu"];
+const kumpulanB27 = ["Johor", "Melaka", "Negeri Sembilan", "Pahang", "Perak", "Perlis", "Pulau Pinang", "Sabah", "Sarawak", "Selangor", "Kuala Lumpur", "Labuan", "Putrajaya"];
+
+export const holidaysV27 = {
+    public: [
+        { date: '1 Jan 2027', day: 'Fri', holiday: "New Year's Day", scope: 'National', applicable_states: "National except Johor, Kedah, Kelantan, Perlis, Terengganu" },
+        { date: '6 Jan 2027', day: 'Wed', holiday: "Israk and Mikraj", scope: 'State', applicable_states: ["Kedah", "Negeri Sembilan", "Perlis", "Terengganu"] },
+        { date: '14 Jan 2027', day: 'Thu', holiday: "YDPB Negeri Sembilan's Birthday", scope: 'State', applicable_states: ["Negeri Sembilan"] },
+        { date: '22 Jan 2027', day: 'Fri', holiday: "Thaipusam", scope: 'State', applicable_states: ["Johor", "Kedah", "Kuala Lumpur", "Negeri Sembilan", "Penang", "Perak", "Putrajaya", "Selangor"] },
+        { date: '24 Jan 2027', day: 'Sun', holiday: "Thaipusam Holiday", scope: 'State', applicable_states: ["Kedah"] },
+        { date: '1 Feb 2027', day: 'Mon', holiday: "Federal Territory Day", scope: 'State', applicable_states: ["Kuala Lumpur", "Labuan", "Putrajaya"] },
+        { date: '6 Feb 2027', day: 'Sat', holiday: "Chinese New Year", scope: 'National', applicable_states: "National" },
+        { date: '7 Feb 2027', day: 'Sun', holiday: "Chinese New Year Holiday", scope: 'National', applicable_states: "National" },
+        { date: '8 Feb 2027', day: 'Mon', holiday: "Chinese New Year Holiday", scope: 'State', applicable_states: "National except Kedah" },
+        { date: '8 Feb 2027', day: 'Mon', holiday: "Awal Ramadan", scope: 'State', applicable_states: ["Johor", "Kedah"] },
+        { date: '20 Feb 2027', day: 'Sat', holiday: "Hari Pengisytiharan Tarikh Kemerdekaan", scope: 'State', applicable_states: ["Melaka"] },
+        { date: '24 Feb 2027', day: 'Wed', holiday: "Nuzul Al-Quran", scope: 'National', applicable_states: "National except Johor, Kedah, Melaka, Negeri Sembilan, Sabah, Sarawak" },
+        { date: '4 Mar 2027', day: 'Thu', holiday: "Installation of Sultan Terengganu", scope: 'State', applicable_states: ["Terengganu"] },
+        { date: '10 Mar 2027', day: 'Wed', holiday: "Hari Raya Aidilfitri", scope: 'National', applicable_states: "National" },
+        { date: '11 Mar 2027', day: 'Thu', holiday: "Hari Raya Aidilfitri Holiday", scope: 'National', applicable_states: "National" },
+        { date: '23 Mar 2027', day: 'Tue', holiday: "Sultan of Johor's Birthday", scope: 'State', applicable_states: ["Johor"] },
+        { date: '26 Mar 2027', day: 'Fri', holiday: "Good Friday", scope: 'State', applicable_states: ["Sabah", "Sarawak"] },
+        { date: '30 Mar 2027', day: 'Tue', holiday: "Sabah Governor's Birthday", scope: 'State', applicable_states: ["Sabah"] },
+        { date: '26 Apr 2027', day: 'Mon', holiday: "Sultan of Terengganu's Birthday", scope: 'State', applicable_states: ["Terengganu"] },
+        { date: '1 May 2027', day: 'Sat', holiday: "Labour Day", scope: 'National', applicable_states: "National" },
+        { date: '2 May 2027', day: 'Sun', holiday: "Labour Day Holiday", scope: 'State', applicable_states: ["Kelantan", "Terengganu"] },
+        { date: '16 May 2027', day: 'Sun', holiday: "Arafat Day", scope: 'State', applicable_states: ["Kelantan", "Terengganu"] },
+        { date: '17 May 2027', day: 'Mon', holiday: "Hari Raya Haji", scope: 'National', applicable_states: "National" },
+        { date: '17 May 2027', day: 'Mon', holiday: "Raja Perlis' Birthday", scope: 'State', applicable_states: ["Perlis"] },
+        { date: '18 May 2027', day: 'Tue', holiday: "Hari Raya Haji Holiday", scope: 'State', applicable_states: ["Kedah", "Kelantan", "Perlis", "Terengganu"] },
+        { date: '20 May 2027', day: 'Thu', holiday: "Wesak Day", scope: 'National', applicable_states: "National" },
+        { date: '22 May 2027', day: 'Sat', holiday: "Hari Hol Pahang", scope: 'State', applicable_states: ["Pahang"] },
+        { date: '30 May 2027', day: 'Sun', holiday: "Harvest Festival", scope: 'State', applicable_states: ["Labuan", "Sabah"] },
+        { date: '31 May 2027', day: 'Mon', holiday: "Harvest Festival Holiday", scope: 'State', applicable_states: ["Labuan", "Sabah"] },
+        { date: '1 Jun 2027', day: 'Tue', holiday: "Hari Gawai", scope: 'State', applicable_states: ["Sarawak"] },
+        { date: '2 Jun 2027', day: 'Wed', holiday: "Hari Gawai Holiday", scope: 'State', applicable_states: ["Sarawak"] },
+        { date: '6 Jun 2027', day: 'Sun', holiday: "Awal Muharram", scope: 'National', applicable_states: "National" },
+        { date: '7 Jun 2027', day: 'Mon', holiday: "Agong's Birthday", scope: 'National', applicable_states: "National" },
+        { date: '7 Jun 2027', day: 'Mon', holiday: "Awal Muharram Holiday", scope: 'State', applicable_states: "National except Kedah, Kelantan, Terengganu" },
+        { date: '20 Jun 2027', day: 'Sun', holiday: "Sultan of Kedah's Birthday", scope: 'State', applicable_states: ["Kedah"] },
+        { date: '7 Jul 2027', day: 'Wed', holiday: "Georgetown World Heritage City Day", scope: 'State', applicable_states: ["Penang"] },
+        { date: '10 Jul 2027', day: 'Sat', holiday: "Penang Governor's Birthday", scope: 'State', applicable_states: ["Penang"] },
+        { date: '10 Jul 2027', day: 'Sat', holiday: "Hari Hol Almarhum Sultan Iskandar", scope: 'State', applicable_states: ["Johor"] },
+        { date: '22 Jul 2027', day: 'Thu', holiday: "Sarawak Day", scope: 'State', applicable_states: ["Sarawak"] },
+        { date: '30 Jul 2027', day: 'Fri', holiday: "Sultan of Pahang's Birthday", scope: 'State', applicable_states: ["Pahang"] },
+        { date: '15 Aug 2027', day: 'Sun', holiday: "Prophet Muhammad's Birthday", scope: 'National', applicable_states: "National" },
+        { date: '16 Aug 2027', day: 'Mon', holiday: "Prophet Muhammad's Birthday Holiday", scope: 'State', applicable_states: "National except Kedah, Kelantan, Terengganu" },
+        { date: '24 Aug 2027', day: 'Tue', holiday: "Melaka Governor's Birthday", scope: 'State', applicable_states: ["Melaka"] },
+        { date: '31 Aug 2027', day: 'Tue', holiday: "Merdeka Day", scope: 'National', applicable_states: "National" },
+        { date: '16 Sep 2027', day: 'Thu', holiday: "Malaysia Day", scope: 'National', applicable_states: "National" },
+        { date: '29 Sep 2027', day: 'Wed', holiday: "Sultan of Kelantan's Birthday", scope: 'State', applicable_states: ["Kelantan"] },
+        { date: '30 Sep 2027', day: 'Thu', holiday: "Sultan of Kelantan's Birthday Holiday", scope: 'State', applicable_states: ["Kelantan"] },
+        { date: '9 Oct 2027', day: 'Sat', holiday: "Sarawak Governor's Birthday", scope: 'State', applicable_states: ["Sarawak"] },
+        { date: '28 Oct 2027', day: 'Thu', holiday: "Deepavali", scope: 'National', applicable_states: "National except Sarawak" },
+        { date: '5 Nov 2027', day: 'Fri', holiday: "Sultan of Perak's Birthday", scope: 'State', applicable_states: ["Perak"] },
+        { date: '11 Dec 2027', day: 'Sat', holiday: "Sultan of Selangor's Birthday", scope: 'State', applicable_states: ["Selangor"] },
+        { date: '24 Dec 2027', day: 'Fri', holiday: "Christmas Eve", scope: 'State', applicable_states: ["Sabah"] },
+        { date: '25 Dec 2027', day: 'Sat', holiday: "Christmas Day", scope: 'National', applicable_states: "National" },
+        { date: '26 Dec 2027', day: 'Sun', holiday: "Christmas Holiday", scope: 'State', applicable_states: ["Kelantan", "Terengganu"] },
+        { date: '26 Dec 2027', day: 'Sun', holiday: "Israk and Mikraj", scope: 'State', applicable_states: ["Kedah", "Negeri Sembilan", "Perlis", "Terengganu"] },
+        { date: '27 Dec 2027', day: 'Mon', holiday: "Israk and Mikraj Holiday", scope: 'State', applicable_states: ["Negeri Sembilan", "Perlis"] },
+    ].filter(Boolean),
+    school: {
+        // Data based on KPM PDF for Year 2027
+        kumpulanA: [ // Kedah, Kelantan, Terengganu
+            { type: "First Day of School", starts: "4 Jan 2027(Mon)", finishes: "", scope: 'Kumpulan A', applicable_states: kumpulanA27 },
+            { type: "Cuti Penggal 1", starts: "5 Mar 2027(Fri)", finishes: "13 Mar 2027(Sat)", scope: 'Kumpulan A', applicable_states: kumpulanA27 },
+            { type: "Cuti Pertengahan Tahun", starts: "21 May 2027(Fri)", finishes: "5 Jun 2027(Sat)", scope: 'Kumpulan A', applicable_states: kumpulanA27 },
+            { type: "Cuti Penggal 2", starts: "27 Aug 2027(Fri)", finishes: "4 Sep 2027(Sat)", scope: 'Kumpulan A', applicable_states: kumpulanA27 },
+            { type: "Cuti Akhir Persekolahan", starts: "3 Dec 2027(Fri)", finishes: "31 Dec 2027(Fri)", scope: 'Kumpulan A', applicable_states: kumpulanA27 },
+            { type: "Tahun Baru Cina (Cuti KPM)", starts: "8 Feb 2027(Mon)", finishes: "8 Feb 2027(Mon)", scope: 'Kumpulan A', applicable_states: ["Kelantan", "Terengganu"] },
+            { type: "Tahun Baru Cina (Cuti KPM)", starts: "9 Feb 2027(Tue)", finishes: "11 Feb 2027(Thu)", scope: 'Kumpulan A', applicable_states: kumpulanA27 },
+            { type: "Hari Raya Aidilfitri (Cuti KPM)", starts: "14 Mar 2027(Sun)", finishes: "14 Mar 2027(Sun)", scope: 'Kumpulan A', applicable_states: kumpulanA27 },
+            { type: "Hari Raya Korban (Cuti KPM)", starts: "16 May 2027(Sun)", finishes: "16 May 2027(Sun)", scope: 'Kumpulan A', applicable_states: kumpulanA27 },
+            { type: "Hari Raya Korban (Cuti KPM)", starts: "18 May 2027(Tue)", finishes: "18 May 2027(Tue)", scope: 'Kumpulan A', applicable_states: ["Kedah"] },
+            { type: "Hari Raya Korban (Cuti KPM)", starts: "19 May 2027(Wed)", finishes: "19 May 2027(Wed)", scope: 'Kumpulan A', applicable_states: kumpulanA27 },
+            { type: "Hari Deepavali (Cuti KPM)", starts: "27 Oct 2027(Wed)", finishes: "27 Oct 2027(Wed)", scope: 'Kumpulan A', applicable_states: kumpulanA27 },
+        ].filter(Boolean),
+        kumpulanB: [ // Other states
+            { type: "First Day of School", starts: "4 Jan 2027(Mon)", finishes: "", scope: 'Kumpulan B', applicable_states: kumpulanB27 },
+            { type: "Cuti Penggal 1", starts: "6 Mar 2027(Sat)", finishes: "14 Mar 2027(Sun)", scope: 'Kumpulan B', applicable_states: kumpulanB27 },
+            { type: "Cuti Pertengahan Tahun", starts: "22 May 2027(Sat)", finishes: "6 Jun 2027(Sun)", scope: 'Kumpulan B', applicable_states: kumpulanB27 },
+            { type: "Cuti Penggal 2", starts: "28 Aug 2027(Sat)", finishes: "5 Sep 2027(Sun)", scope: 'Kumpulan B', applicable_states: kumpulanB27 },
+            { type: "Cuti Akhir Persekolahan", starts: "4 Dec 2027(Sat)", finishes: "31 Dec 2027(Fri)", scope: 'Kumpulan B', applicable_states: kumpulanB27 },
+            { type: "Tahun Baru Cina (Cuti KPM)", starts: "5 Feb 2027(Fri)", finishes: "5 Feb 2027(Fri)", scope: 'Kumpulan B', applicable_states: kumpulanB27 },
+            { type: "Tahun Baru Cina (Cuti KPM)", starts: "9 Feb 2027(Tue)", finishes: "12 Feb 2027(Fri)", scope: 'Kumpulan B', applicable_states: kumpulanB27 },
+            { type: "Hari Raya Korban (Cuti KPM)", starts: "18 May 2027(Tue)", finishes: "19 May 2027(Wed)", scope: 'Kumpulan B', applicable_states: kumpulanB27 },
+            { type: "Hari Wesak (Cuti KPM)", starts: "21 May 2027(Fri)", finishes: "21 May 2027(Fri)", scope: 'Kumpulan B', applicable_states: kumpulanB27 },
+            { type: "Hari Deepavali (Cuti KPM)", starts: "27 Oct 2027(Wed)", finishes: "27 Oct 2027(Wed)", scope: 'Kumpulan B', applicable_states: ["National except Sarawak"] },
+            { type: "Hari Deepavali (Cuti KPM)", starts: "29 Oct 2027(Fri)", finishes: "29 Oct 2027(Fri)", scope: 'Kumpulan B', applicable_states: ["National except Sarawak"] },
+            { type: "Hari Deepavali (Cuti KPM)", starts: "28 Oct 2027(Thu)", finishes: "28 Oct 2027(Thu)", scope: 'Kumpulan B', applicable_states: ["Sarawak"] },
+        ].filter(Boolean)
+    }
+};
+
+// Years with holiday data, oldest first. Add a new year here (and above) to support it everywhere.
+export const holidaysByYear = {
+    '2025': holidaysV25,
+    '2026': holidaysV26,
+    '2027': holidaysV27,
+};
+export const supportedYears = Object.keys(holidaysByYear);
+
 // List of all states for the filter UI
 export const allStates = [
     "Johor", "Kedah", "Kelantan", "Melaka", "Negeri Sembilan", "Pahang", "Perak", "Perlis",

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import HolidayCalendar from './components/HolidayCalendar';
 import BlogSection from './components/BlogSection';
+import { supportedYears } from './data/holidays';
 
 function App() {
     const [theme, setTheme] = useState('light');
@@ -8,7 +9,6 @@ function App() {
 
     useEffect(() => {
         // ... theme logic ...
-        const savedTheme = localStorage.getItem('theme') || 'light';
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         const initialTheme = localStorage.getItem('theme') || (prefersDark ? 'dark' : 'light');
         setTheme(initialTheme);
@@ -31,7 +31,7 @@ function App() {
     // This function will be passed down to update the selectedYear state
     const handleCalendarYearChange = (newYear) => {
         // Basic validation: ensure the new year is within your supported range
-        if (newYear === '2025' || newYear === '2026') {
+        if (supportedYears.includes(newYear)) {
             setSelectedYear(newYear);
         }
     };
@@ -55,8 +55,9 @@ function App() {
                                 value={selectedYear}
                                 onChange={(e) => setSelectedYear(e.target.value)} // Direct update from dropdown
                             >
-                                <option value="2025">Year 2025</option>
-                                <option value="2026">Year 2026</option>
+                                {supportedYears.map(year => (
+                                    <option key={year} value={year}>Year {year}</option>
+                                ))}
                             </select>
 
                             {/* Dark/Light Mode Toggle Switch */}

@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { supportedYears } from '../data/holidays';
+
+const minYear = parseInt(supportedYears[0], 10);
+const maxYear = parseInt(supportedYears[supportedYears.length - 1], 10);
 
 // Accept onYearChange prop for updating the main year state in App.js
 function CalendarView({ holidays, selectedYear, onYearChange }) {
@@ -103,7 +107,7 @@ function CalendarView({ holidays, selectedYear, onYearChange }) {
 
         // 2. Conditionally call the callback ONLY if the internal navigation
         //    moves the year *strictly below* the App's currently selected year.
-        if (newYear < currentSelectedYear && currentSelectedYear > 2025) { // Ensure we don't go below min year via callback
+        if (newYear < currentSelectedYear && currentSelectedYear > minYear) { // Ensure we don't go below min year via callback
              // We internally navigated from Jan of selectedYear to Dec of the previous year.
              // Tell the App to switch its main selectedYear.
             onYearChange(newYear.toString());
@@ -122,7 +126,7 @@ function CalendarView({ holidays, selectedYear, onYearChange }) {
 
         // 2. Conditionally call the callback ONLY if the internal navigation
         //    moves the year *strictly above* the App's currently selected year.
-        if (newYear > currentSelectedYear && currentSelectedYear < 2026) { // Ensure we don't go above max year via callback
+        if (newYear > currentSelectedYear && currentSelectedYear < maxYear) { // Ensure we don't go above max year via callback
             // We internally navigated from Dec of selectedYear to Jan of the next year.
             // Tell the App to switch its main selectedYear.
             onYearChange(newYear.toString());
@@ -150,8 +154,6 @@ function CalendarView({ holidays, selectedYear, onYearChange }) {
     const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     const dayNames = ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa"];
     const calendarDays = generateCalendarDays();
-    const minYear = 2025;
-    const maxYear = 2026;
 
     return (
         <div className="bg-white dark:bg-gray-800 p-4 sm:p-6 rounded-lg shadow-xl" role="application" aria-label="Holiday Calendar">

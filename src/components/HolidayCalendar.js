@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import CalendarView from './CalendarView';
 // Import data - ensure allStates is also exported from holidays.js
-import { holidaysV25, holidaysV26, allStates as originalAllStates } from '../data/holidays';
+import { holidaysByYear, allStates as originalAllStates } from '../data/holidays';
 
 // Add "All States" to the list for the UI
 const statesForFilter = ['All States', 'National', ...originalAllStates];
 
 function HolidayCalendar({ selectedYear, onYearChange }) {
-    const holidayData = selectedYear === '2026' ? holidaysV26 : holidaysV25;
+    const holidayData = holidaysByYear[selectedYear] || holidaysByYear['2025'];
 
     // --- FILTER STATES ---
     const [selectedType, setSelectedType] = useState('All'); // 'All', 'Public', 'School'
@@ -299,9 +299,10 @@ function HolidayCalendar({ selectedYear, onYearChange }) {
 
             {/* Footer Note */}
              <p className="mt-4 text-xs sm:text-sm text-gray-500 dark:text-gray-400">
-                Holiday data based on official sources for {selectedYear}. School holidays follow KPM calendar ({selectedYear === '2026' ? 'Year 2026' : 'Session 2025/2026'}).
+                Holiday data based on official sources for {selectedYear}. School holidays follow KPM calendar ({selectedYear === '2025' ? 'Session 2025/2026' : `Year ${selectedYear}`}).
                  {selectedYear === '2025' && <span> Kump. A: Johor, Kedah, Kelantan, Terengganu.</span>}
-                 {selectedYear === '2026' && <span> Kump. A: Kedah, Kelantan, Terengganu.</span>}
+                 {selectedYear !== '2025' && <span> Kump. A: Kedah, Kelantan, Terengganu.</span>}
+                 {selectedYear === '2027' && <span> 2027 public holidays are provisional until officially gazetted.</span>}
                 Kump. B: Other states.
             </p>
         </div>
