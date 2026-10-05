@@ -270,11 +270,24 @@ export const holidaysV27 = {
     }
 };
 
+// January 2028 only (continuation of the 2027 school year-end). Dates are provisional until the
+// Federal Government and KPM publish the 2028 schedules.
+export const holidaysV28 = {
+    public: [
+        { date: '1 Jan 2028', day: 'Sat', holiday: "New Year's Day", scope: 'National', applicable_states: "National except Johor, Kedah, Kelantan, Perlis, Terengganu" },
+        { date: '14 Jan 2028', day: 'Fri', holiday: "YDPB Negeri Sembilan's Birthday", scope: 'State', applicable_states: ["Negeri Sembilan"] },
+        { date: '26 Jan 2028', day: 'Wed', holiday: "Chinese New Year", scope: 'National', applicable_states: "National" },
+        { date: '27 Jan 2028', day: 'Thu', holiday: "Chinese New Year Holiday", scope: 'National', applicable_states: "National" },
+    ],
+    school: { kumpulanA: [], kumpulanB: [] }
+};
+
 // Years with holiday data, oldest first. Add a new year here (and above) to support it everywhere.
 export const holidaysByYear = {
     '2025': holidaysV25,
     '2026': holidaysV26,
     '2027': holidaysV27,
+    '2028': holidaysV28,
 };
 export const supportedYears = Object.keys(holidaysByYear);
 

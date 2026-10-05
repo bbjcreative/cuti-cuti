@@ -303,6 +303,7 @@ function HolidayCalendar({ selectedYear, onYearChange }) {
                  {selectedYear === '2025' && <span> Kump. A: Johor, Kedah, Kelantan, Terengganu.</span>}
                  {selectedYear !== '2025' && <span> Kump. A: Kedah, Kelantan, Terengganu.</span>}
                  {selectedYear === '2027' && <span> Islamic holiday dates are subject to official confirmation.</span>}
+                 {selectedYear === '2028' && <span> January 2028 only. Dates are provisional until officially published; school holidays are not yet available.</span>}
                 Kump. B: Other states.
             </p>
         </div>
