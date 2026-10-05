@@ -5,7 +5,10 @@ import { supportedYears } from './data/holidays';
 
 function App() {
     const [theme, setTheme] = useState('light');
-    const [selectedYear, setSelectedYear] = useState('2027');
+    const [selectedYear, setSelectedYear] = useState(() => {
+        const current = String(new Date().getFullYear());
+        return supportedYears.includes(current) ? current : supportedYears[supportedYears.length - 1];
+    });
 
     useEffect(() => {
         // ... theme logic ...
