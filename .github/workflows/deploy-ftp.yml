@@ -41,6 +41,6 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: ${{ secrets.FTP_SERVER_DIR }}
+          server-dir: ${{ endsWith(secrets.FTP_SERVER_DIR, '/') && secrets.FTP_SERVER_DIR || format('{0}/', secrets.FTP_SERVER_DIR) }}
           protocol: ftps
           local-dir: ./build/
