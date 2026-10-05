@@ -173,9 +173,8 @@ export const holidaysV26 = {
     }
 };
 
-// DATA UPDATE FOR 2027
-// Public holidays: PROVISIONAL (publicholidays.com.my, Oct 2026) - re-check against the official JPM gazette once announced.
-// School holidays: KPM "Kalendar Akademik Tahun 2027" (Lampiran A, B & C).
+// 2027 public holidays follow the Federal Government's published schedule.
+// School holidays follow KPM's "Kalendar Akademik Tahun 2027" (Lampiran A, B & C).
 const kumpulanA27 = ["Kedah", "Kelantan", "Terengganu"];
 const kumpulanB27 = ["Johor", "Melaka", "Negeri Sembilan", "Pahang", "Perak", "Perlis", "Pulau Pinang", "Sabah", "Sarawak", "Selangor", "Kuala Lumpur", "Labuan", "Putrajaya"];
 

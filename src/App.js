@@ -5,7 +5,7 @@ import { supportedYears } from './data/holidays';
 
 function App() {
     const [theme, setTheme] = useState('light');
-    const [selectedYear, setSelectedYear] = useState('2026');
+    const [selectedYear, setSelectedYear] = useState('2027');
 
     useEffect(() => {
         // ... theme logic ...

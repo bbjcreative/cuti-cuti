@@ -302,7 +302,7 @@ function HolidayCalendar({ selectedYear, onYearChange }) {
                 Holiday data based on official sources for {selectedYear}. School holidays follow KPM calendar ({selectedYear === '2025' ? 'Session 2025/2026' : `Year ${selectedYear}`}).
                  {selectedYear === '2025' && <span> Kump. A: Johor, Kedah, Kelantan, Terengganu.</span>}
                  {selectedYear !== '2025' && <span> Kump. A: Kedah, Kelantan, Terengganu.</span>}
-                 {selectedYear === '2027' && <span> 2027 public holidays are provisional until officially gazetted.</span>}
+                 {selectedYear === '2027' && <span> Islamic holiday dates are subject to official confirmation.</span>}
                 Kump. B: Other states.
             </p>
         </div>

@@ -1,0 +1,20 @@
+# cuti-cuti.my
+
+> Malaysia public and school holiday calendar with calendar and list views, state and school-group filters, calendar downloads, reminders, and travel ideas.
+
+## Holiday calendar
+
+- [Malaysia holiday calendar](https://cuti-cuti.my/): Browse holiday dates for 2025, 2026, and 2027. The page opens on 2027; use the year selector to view another supported year.
+- The calendar includes national and state public holidays and KPM school breaks for Kumpulan A and Kumpulan B.
+- Public holiday entries can be filtered by state. School breaks can be filtered by school group.
+- Users can download calendar events and reminders in iCalendar (.ics) format.
+- Islamic holiday dates are subject to official confirmation. Check the linked government sources for the latest updates.
+
+## Official references
+
+- [Federal public holidays 2027 - Cabinet Division, Prime Minister's Department](https://www.kabinet.gov.my/storage/2026/08/HKA_2027.pdf)
+- [KPM academic calendar portal](https://www.moe.gov.my/kalendar-akademik-semasa)
+
+## About
+
+cuti-cuti.my is a holiday-planning website. It is not a government website. Confirm holiday dates with the relevant official source before making plans.
